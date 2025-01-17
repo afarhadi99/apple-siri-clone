@@ -1,12 +1,11 @@
 "use client"
 import React, { useEffect, useRef } from 'react';
-import { motion, useScroll, useMotionValue, useTransform, animate } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import headerData from './header.json';
-import { titleVariants, imageVariants, sentenceVariants } from './animation';
+import { titleVariants, imageVariants } from './animation';
 
 const Header: React.FC = () => {
     const { title, images, sentences } = headerData;
-    const { scrollYProgress } = useScroll();
     const backgroundPosition = useMotionValue(0);
     const sentencesRef = useRef(null);
 
