@@ -1,0 +1,17 @@
+{
+    "title": "Siri",
+    "images": [
+      "hero_ipad.png",
+      "hero_airpods.png",
+      "hero_iphone.png",
+      "hero_watch.png",
+      "hero_apple_tv.png",
+      "hero_homepod_mini.png"
+    ],
+    "sentences": [
+      "Get everyday tasks done using only your voice.",
+      "Just say “Siri”1 or “Hey Siri” to start your request.",
+      "Built into all your Apple devices. Now including Apple Vision Pro.",
+      "Protected by the strongest privacy of any intelligent assistant."
+    ]
+  }
