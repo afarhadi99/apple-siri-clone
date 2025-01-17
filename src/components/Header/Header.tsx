@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import headerData from './header.json';
 import { titleVariants, imageVariants } from './animation';
@@ -8,6 +8,7 @@ const Header: React.FC = () => {
     const { title, images, sentences } = headerData;
     const backgroundPosition = useMotionValue(0);
     const sentencesRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
 
     const gradientTextAnimation = useTransform(
         backgroundPosition,
@@ -25,6 +26,17 @@ const Header: React.FC = () => {
 
         return () => animation.stop();
     }, [backgroundPosition]);
+
+    useLayoutEffect(() => {
+      const handleResize = () => {
+          setIsMobile(window.innerWidth < 768);
+      };
+
+      handleResize();
+      window.addEventListener('resize', handleResize);
+
+      return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
      const imagePositions = [
         { bottom: '0%', right: '60%', width: '100%' },     // iPad
@@ -72,7 +84,7 @@ const Header: React.FC = () => {
                             className="absolute object-contain"
                              style={
                                  
-                                  window.innerWidth < 768 ? imagePositions[index] : responsiveImagePositions[index]
+                              isMobile ? imagePositions[index] : responsiveImagePositions[index]
                                 
                               }
                             variants={imageVariants[index]}
